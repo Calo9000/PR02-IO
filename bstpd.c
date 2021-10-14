@@ -52,10 +52,11 @@ int main()
 {
 
 	//int n = 5;
-	int n = 4;
+	int n = 5;
 	
 	//float p[] = {0.3, 0.2, 0.1, 0.15, 0.25};
-	float p[] = {0.18, 0.32, 0.39, 0.11};
+	//float p[] = {0.12, 0.18, 0.2, 0.09, 0.15, 0.26};
+	float p[] = {0.213, 0.02, 0.547, 0.1, 0.12};
 
 	//	EL ORDEN DE LAS PROBABILIDADES ES EL ORDEN DE PRIORIDAD DE LAS LLAVES
 
@@ -78,7 +79,7 @@ int main()
 	{
 		for(int j=0;j<n+1;j++)
 		{
-			printf("%.2f\t",A[i][j]);
+			printf("%.3f\t",A[i][j]);
 		}
 		printf("\n");
 	}

@@ -6,6 +6,51 @@
 #include "bstgreedy.h"
 #include <locale.h>
 #define N 100
+#define ARRAY_SIZE 5000
+
+void agregarNodo(int R[N][N], char arbol[ARRAY_SIZE], int i, int j, char valor[6]){
+    //printf("%d, %d\n",i, j);
+
+    int raiz = R[i-1][j];
+    char subarbol[ARRAY_SIZE] = "node {";
+    char v[1];
+    v[0] = (char) valor[raiz];
+
+    printf("valor: %c\n", (char) valor[raiz]);
+
+    strncat(subarbol, v, 1);
+    strcat(subarbol, "}\n");
+    if(raiz==i){
+        printf("%d, %d, %d\n", i, j, raiz);
+        strcat(subarbol, "child[missing]\n");
+        strcat(subarbol, "child{node{\n");
+        v[0] = (char) valor[j];
+        strncat(subarbol, v, 1);
+        strcat(subarbol, "}}\n");
+        strcat(arbol, subarbol);
+        return;
+    }
+    else if(raiz==j){
+        printf("%d, %d, %d\n", i, j, raiz);
+        strcat(subarbol, "child{node{\n");
+        v[0] = (char) valor[j];
+        strncat(subarbol, v, 1);
+        strcat(subarbol, "}}\n");
+        strcat(subarbol, "child[missing]\n");
+        strcat(arbol, subarbol);
+        return;
+    }
+    else{
+        printf("%d, %d: %d\n", i, j, raiz);
+        strcat(subarbol, "child {\n");
+        agregarNodo(R, arbol, i, raiz-1, valor);
+        strcat(subarbol, "}\nchild {");
+        agregarNodo(R, arbol, raiz+1, j, valor);
+        strcat(subarbol, "}");
+        strcat(arbol, subarbol);
+        return;
+    }
+}
 
 int ejemplo(){
 
@@ -18,15 +63,31 @@ int ejemplo(){
 	char valor[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
 	float p[n];
     float s = 0;
-	for (int i = 0; i<n; i++){
+	/*
+    for (int i = 0; i<n; i++){
 		// probabilidad de los objetos
 		p[i] = rand() % 100 + 1;
         s+=p[i];
 	}
+    */
+
+    float r = 0; 
+    for (int k = 1; k<3; k++){
+        p[2+(k-1)*3] = 0.16;
+        for (int i = 0; i<2; i++){
+            r = rand() % 17;
+            r -= 9;
+            r /= 100;
+            p[(i)+2*(k-1)+(k-1)] = 0.17 + r;
+            p[3*k-1] -= r;
+        }
+    }
+
+
     for (int i = 0; i<n; i++){
 		// probabilidad de los objetos
-		p[i] = p[i]/s;
-		printf("Objeto %d-> Valor: %c, Probabilidad: %.4f\n", i, valor[i], p[i]);
+		//p[i] = p[i]/s;
+		printf("Objeto %d-> Valor: %c, Probabilidad: %.2f\n", i, valor[i], p[i]);
 	}
 
     
@@ -76,11 +137,17 @@ int ejemplo(){
     printf("\n");
     
     
+    char arbolPD[ARRAY_SIZE] = "\\begin{figure}[ht]\n\\centering\n\\begin{tikzpicture}[\nevery node/.style = {minimum width = 3em, draw, circle},\n]\n\\scriptsize\n\\";
+
+    agregarNodo(R_pd, arbolPD, 1, 6, valor);
+
+    printf("%s\n",arbolPD);
 
     //prueba(c, valor, peso, n);
     return 0;
 
 }
+
 
 
 int main(int argc, char* argv[]){

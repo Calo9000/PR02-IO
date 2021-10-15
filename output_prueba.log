@@ -1,0 +1,150 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.9.17)  14 OCT 2021 20:48
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./output_prueba.tex
+(./output_prueba.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip49
+\f@nch@O@elh=\skip50
+\f@nch@O@erh=\skip51
+\f@nch@O@olh=\skip52
+\f@nch@O@orh=\skip53
+\f@nch@O@elf=\skip54
+\f@nch@O@erf=\skip55
+\f@nch@O@olf=\skip56
+\f@nch@O@orf=\skip57
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\captionmargin=\dimen135
+\captionmargin@=\dimen136
+\captionwidth=\dimen137
+\caption@tempdima=\dimen138
+\caption@indent=\dimen139
+\caption@parindent=\dimen140
+\caption@hangindent=\dimen141
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count175
+\c@continuedfloat=\count176
+)
+
+! LaTeX Error: File `tikz.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: paquetes/tikz.sty
+(./paquetes/tikz.sty
+
+! LaTeX Error: File `pgf.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: paquetes/pgf.sty
+(./paquetes/pgf.sty
+
+! LaTeX Error: File `pgfrcs.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: paquetes/pgfrcs.sty
+(./paquetes/pgfrcs.sty
+! I can't find file `pgfutil-common.tex'.
+l.10 \input pgfutil-common.tex
+                              
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: paquetes/pgfutil-common.tex
+(./paquetes/pgfutil-common.tex
+\pgfutil@everybye=\toks15
+\pgfutil@tempdima=\dimen142
+\pgfutil@tempdimb=\dimen143
+
+! I can't find file `pgfutil-common-lists.tex'.
+l.912 \input pgfutil-common-lists.tex
+                                     
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: pgfutil-common-lists.tex
+! I can't find file `pgfutil-common-lists.tex'.
+l.912 \input pgfutil-common-lists.tex
+                                     
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: paquetes/pgfutil-common-lists.tex
+(./paquetes/pgfutil-common-lists.tex))
+! I can't find file `pgfutil-latex.def'.
+l.11 \input pgfutil-latex.def
+                             
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: pgfutil-latex.def
+! I can't find file `pgfutil-latex.def'.
+l.11 \input pgfutil-latex.def
+                             
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: paquetes/pgfutil-latex.def
+(./paquetes/pgfutil-latex.def
+\pgfutil@abb=\box45
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+
+! LaTeX Error: File `pgfrcs.code.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+! Interruption.
+<to be read again> 
+                   }
+l.13 \input{pgfrcs.code.tex}
+                            ^^M
+? x
+ 
+Here is how much of TeX's memory you used:
+ 1779 strings out of 483121
+ 29658 string characters out of 5964354
+ 259134 words of memory out of 5000000
+ 16857 multiletter control sequences out of 15000+600000
+ 532338 words of font info for 24 fonts, out of 8000000 for 9000
+ 40 hyphenation exceptions out of 8191
+ 45i,0n,45p,223b,42s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

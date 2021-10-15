@@ -326,6 +326,7 @@ int ejemplo(){
 	system(evinceFile);
 
     */
+   
     //prueba(c, valor, peso, n);
     return 0;
 

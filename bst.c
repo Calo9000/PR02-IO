@@ -68,7 +68,7 @@ int ejemplo(){
 
 	// cantidad de objetos
 	int n = 6;
-    printf("Cantidad de objetos: %d\n",n);
+    //printf("Cantidad de objetos: %d\n",n);
 
 
     // valor de los objetos
@@ -99,7 +99,7 @@ int ejemplo(){
     for (int i = 0; i<n; i++){
 		// probabilidad de los objetos
 		//p[i] = p[i]/s;
-		printf("Objeto %d-> Valor: %c, Probabilidad: %.2f\n", i, valor[i], p[i]);
+		//printf("Objeto %d-> Valor: %c, Probabilidad: %.2f\n", i, valor[i], p[i]);
 	}
 
     
@@ -114,6 +114,7 @@ int ejemplo(){
     clock_t end = clock();
     double d_pd = (double) (end - begin) / CLOCKS_PER_SEC;
 
+    /*
     printf("\n");
 	for(int i=0;i<n+1;i++){
 		for(int j = 0; j<n+1; j++){
@@ -129,13 +130,15 @@ int ejemplo(){
 		}
 		printf("\n");
 	}
+    */
 
-    printf("Tiempo de ejecución: %f\n", d_pd);
-    printf("\n");
+    //printf("Tiempo de ejecución: %f\n", d_pd);
+    //printf("\n");
     begin = clock();
     bstGreedy(n, p, R_greedy);
     end = clock();
 
+    /*
     printf("\n");
 	for(int i=0;i<n+1;i++){
 		for(int j = 0; j<n+1; j++){
@@ -143,10 +146,11 @@ int ejemplo(){
 		}
 		printf("\n");
 	}
+    */
 
     double d_gr = (double) (end - begin) / CLOCKS_PER_SEC;
-    printf("Tiempo de ejecución: %f\n", d_gr);
-    printf("\n");
+    //printf("Tiempo de ejecución: %f\n", d_gr);
+    //printf("\n");
     
     
     char arbolPD[ARRAY_SIZE] = "\\begin{figure}[ht]\n\\centering\n\\begin{tikzpicture}[\nevery node/.style = {minimum width = 3em, draw, circle},\nlevel/.style={sibling distance={3cm/max(1,#1)}}\n]\n\\scriptsize\n\\";
@@ -297,7 +301,7 @@ int ejemplo(){
     strcat(documentoEj,arbolGreedy);
     strcat(documentoEj,final);
 
-    printf("%s\n",documentoEj);
+    //printf("%s\n",documentoEj);
     
     
     char name[15] = "ejemplo";
@@ -407,10 +411,11 @@ int experimento(int n){
 
         //printf("promedio pd %f \tpromedio gr %f\n", pr_pd, pr_g);
 
-
         // sacar porcentajes
 
         porcentajes_g[i] = (float) coincidencias * 100.0f / (float) n;
+
+        printf("coincidencias: %d\n", coincidencias);
 
     }
 
@@ -502,7 +507,7 @@ int experimento(int n){
         char bufferGP[16];
                 
         float z = porcentajes_g[i];
-        snprintf(bufferGP, 16, "%f", z);
+        snprintf(bufferGP, 16, "%.2f", z);
         strcat(tablaGP, bufferGP);
         strcat(tablaGP, "\\%");
 

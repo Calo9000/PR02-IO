@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define N 100
+#define N 500
 #define inf 9999
 
 // retorna el indice del mayor numero en un arreglo
@@ -36,4 +36,6 @@ void bstGreedy(int n, float p[N],  int R[N][N])
 			}
 		}
 	}
+
+
 }

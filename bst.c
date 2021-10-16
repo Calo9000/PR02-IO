@@ -5,7 +5,6 @@
 #include "bstpd.h"
 #include "bstgreedy.h"
 #include <locale.h>
-#define N 100
 #define ARRAY_SIZE 5000
 
 void agregarNodo(int R[N][N], char arbol[ARRAY_SIZE], int i, int j, char valor[6]){
@@ -300,7 +299,7 @@ int ejemplo(){
 
     printf("%s\n",documentoEj);
     
-    /*
+    
     char name[15] = "ejemplo";
     char fileName[70];
 	char pdfName[70];
@@ -325,9 +324,154 @@ int ejemplo(){
 						        
 	system(evinceFile);
 
-    */
+    
    
     //prueba(c, valor, peso, n);
+    return 0;
+
+}
+
+int experimento(int n){
+
+    float promedios_pd[10], promedios_g[10];
+    float porcentajes_g[10];
+
+    for(int i = 0; i<10; i++){
+        float tiempos_pd[n], tiempos_g[n];
+        int coincidencias = 0;
+        for(int k = 0; k<n; k++){
+            // cantidad de llaves
+            int c = (i+1)*10;
+
+            // probabilidades
+            float p[c];
+            float s = 0;
+            for(int a = 0; a<c; a++){
+                p[a] = rand() % 1000;
+                s+= p[a];
+            }
+            for(int a = 0; a<c; a++){
+                p[a] = p[a]/s;
+            }
+
+            struct timespec start, end;
+
+            float A[N][N];
+            int Rpd[N][N], Rg[N][N];
+
+            // se ejecuta el algoritmo con pd y se mide el tiempo
+            clock_gettime(CLOCK_REALTIME, &start);
+            bstPD(c, p, Rpd, A);
+            clock_gettime(CLOCK_REALTIME, &end);
+            double d_pd = (end.tv_sec-start.tv_sec)+(end.tv_nsec-start.tv_nsec)/1000000000.0;
+            tiempos_pd[k] = d_pd;
+
+
+            // se ejecuta el algoritmo greedy y se mide el tiempo
+            clock_gettime(CLOCK_REALTIME, &start);
+            bstGreedy(c, p, Rg);
+            clock_gettime(CLOCK_REALTIME, &end);
+            double d_g = (end.tv_sec-start.tv_sec)+(end.tv_nsec-start.tv_nsec)/1000000000.0;
+            tiempos_g[k] = d_g;
+        
+            
+            // fijarse si los arboles son iguales
+            int sonIguales = 1;
+            for(int x = 0; x<c; x++){
+                for(int y = 1; y<c+1; y++){
+                    if(Rpd[x][y] != Rg[x][y]){
+                        sonIguales = 0;
+                        goto fin;
+                    }
+                }
+            }
+
+            fin:
+
+            coincidencias += sonIguales;
+
+        }
+        //SACAR LOS PROMEDIOS
+        float total_pd = 0.0, total_g = 0.0;
+
+        for (int a = 0; a<n; a++){
+            total_pd += tiempos_pd[a];
+            total_g += tiempos_g[a];
+        }
+
+        float pr_pd = total_pd/(float)n;
+        float pr_g = total_g/(float)n;
+
+        promedios_pd[i] = pr_pd;
+        promedios_g[i] = pr_g;
+
+        //printf("promedio pd %f \tpromedio gr %f\n", pr_pd, pr_g);
+
+
+        // sacar porcentajes
+
+        porcentajes_g[i] = (float) coincidencias * 100.0f / (float) n;
+
+    }
+
+    // generar el latex
+
+    for(int i=0; i<10; i++){
+        printf("%f\t", promedios_pd[i]);
+    }
+    printf("\n");
+    for(int i=0; i<10; i++){
+        printf("%f\t", promedios_g[i]);
+    }
+    printf("\n");
+    for(int i=0; i<10; i++){
+        printf("%f\t", porcentajes_g[i]);
+    }
+    printf("\n");
+
+
+    // iniciar documento
+    char archivo[ARRAY_SIZE] = "";
+
+    char inicio[ARRAY_SIZE] = "\\documentclass{article}\n\\usepackage{textcomp}\n\\usepackage{tabularx}\n\\usepackage{fancyhdr}\n\\usepackage{multirow}\n\\usepackage{graphicx}\n\\usepackage{caption}\n\\pagestyle{fancy}\n\\lhead{Resultados de los algoritmos}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Reporte de resultados obtenidos}\nEn el presente documento se muestran los resultados de la ejecución de los algoritmos. Las tablas 1, 2 y 3 corresponden con los algoritmos de programación din\\'amica, greedy y greedy proporcional respectivamente. En cada casilla se muestra el tiempo de ejecución promedio de ";
+
+    char entrada[10];    
+    snprintf(entrada, 10, "%d", n);
+    strcat(inicio, entrada);
+
+    strcat(inicio, " escenarios. La cantidad de llaves que se ordenaron en cada escenario se muestra en la columna izquierda, y el tiempo en segundos se muestra en la columna derecha. \n En la tabla 3 se muestra el porcentaje de veces que el \\'arbol generado por el algoritmo greedy coincidi\\'o con el \\'arbol \\'optimo.\n\\begin{center}\n");
+
+    // finalizar documento
+    char final[ARRAY_SIZE] = "\\end{center}\n\\end{document}";
+
+
+    // GENERAR LAS 3 TABLAS
+    char inicioTabla[ARRAY_SIZE] = "\\begin{table}[ht]\n\\centering\n";
+
+    char tituloPD[ARRAY_SIZE] = "\\caption*{Tabla 1: Tiempos promedio de ejecuci\\'on con Programaci\\'on Din\\'amica (\\textmu s)}\n\\label{1}\n";
+    char tituloG[ARRAY_SIZE] = "\\caption*{Tabla 2: Tiempos promedio de ejecuci\\'on con Algoritmo Greedy (\\textmu s)}\n\\label{2}\n";
+    char tituloGP[ARRAY_SIZE] = "\\caption*{Tabla 3: Porcentaje de \\'exitos para el algoritmo Greedy}\n\\label{4}\n";
+
+    char inicioTabla2[ARRAY_SIZE] = "\\begin{tabular}{r|l}\nLlaves & \\begin{tabular}[c]{@{}c@{}}Tiempo\\\\ (segundos)\\end{tabular} \\\\ \\hline";
+
+    // declarar tablas
+    char tablaPD[ARRAY_SIZE] = "";
+    char tablaG[ARRAY_SIZE] = "";
+    char tablaGP[ARRAY_SIZE] = "";
+
+    // preparar las tablas
+    strcat(tablaPD, inicioTabla);
+    strcat(tablaPD, tituloPD);
+    strcat(tablaPD, inicioTabla2);
+
+    strcat(tablaG, inicioTabla);
+    strcat(tablaG, tituloG);
+    strcat(tablaG, inicioTabla2);
+
+    strcat(tablaGP, inicioTabla);
+    strcat(tablaGP, tituloGP);
+    strcat(tablaGP, inicioTabla2);
+
     return 0;
 
 }
@@ -351,8 +495,9 @@ int main(int argc, char* argv[]){
 		    int a = atoi(c);
             //printf("%d\n", a);
             if (a>0) {
-                //experimento(a);
                 printf("Ejecutando modo de experimento\n");
+                experimento(a);
+
             } else printf("Ingrese un número entero mayor que 0\n");
     }else{
 		printf("Argumentos inválidos\n\tIngrese -X si desea ejecutar el modo de ejemplo\n\tIngrese -E=n si desea ejecutar el modo experimento, donde n es un número entero mayor que 0\n");

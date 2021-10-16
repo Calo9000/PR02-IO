@@ -18,7 +18,7 @@ Los datos utilizados se resumen en la siguiente tabla:
 \centering
 \begin{tabular}{r|l|l|l|l|l|l}
 Llave & A & B & C & D & E & F  \\\hline
-Probabilidad & 0.14 & 0.11 & 0.25 & 0.09 & 0.23 & 0.18
+Probabilidad & 0.15 & 0.14 & 0.21 & 0.10 & 0.11 & 0.29
 \end{tabular}
 \label{datos}
 \end{table}
@@ -31,12 +31,12 @@ Tiempo de ejecución: 0.000003 segundos.
 \centering
 \begin{tabular}{c|ccccccc}
 \backslashbox{$i$}{$j$} & 0 & 1    & 2    & 3    & 4    & 5    & 6    \\ \hline
-1 & 0.00 & 0.14 & 0.36 & 0.86 & 1.04 & 1.59 & 2.13 \\
-2 & & 0.00 & 0.11 & 0.47 & 0.65 & 1.20 & 1.69 \\
-3 & & & 0.00 & 0.25 & 0.43 & 0.98 & 1.36 \\
-4 & & & & 0.00 & 0.09 & 0.41 & 0.77 \\
-5 & & & & & 0.00 & 0.23 & 0.59 \\
-6 & & & & & & 0.00 & 0.18 \\
+1 & 0.00 & 0.15 & 0.43 & 0.86 & 1.13 & 1.45 & 2.24 \\
+2 & & 0.00 & 0.14 & 0.49 & 0.69 & 1.01 & 1.80 \\
+3 & & & 0.00 & 0.21 & 0.41 & 0.73 & 1.41 \\
+4 & & & & 0.00 & 0.10 & 0.31 & 0.81 \\
+5 & & & & & 0.00 & 0.11 & 0.51 \\
+6 & & & & & & 0.00 & 0.29 \\
 7 & & & & & & & 0.00 \\
 
 \end{tabular}
@@ -48,11 +48,11 @@ Tiempo de ejecución: 0.000003 segundos.
 \centering
 \begin{tabular}{c|cccccc}
 \backslashbox{$i$}{$j$} & 1    & 2    & 3    & 4    & 5    & 6    \\ \hline
-1 & 1 & 1 & 3 & 3 & 3 & 3 \\
-2 & & 2 & 3 & 3 & 3 & 5 \\
+1 & 1 & 1 & 2 & 3 & 3 & 3 \\
+2 & & 2 & 3 & 3 & 3 & 3 \\
 3 & & & 3 & 3 & 3 & 5 \\
-4 & & & & 4 & 5 & 5 \\
-5 & & & & & 5 & 5 \\
+4 & & & & 4 & 5 & 6 \\
+5 & & & & & 5 & 6 \\
 6 & & & & & & 6 \\
 
 \end{tabular}
@@ -75,12 +75,16 @@ child{
 node {B}
 }
 }
-child {node {E}
-child {
+child {node {F}
+child{
+node {E}
+child{
 node {D}
 }
-child {node {F}
-}};
+child[missing]
+}
+child[missing]
+};
 \end{tikzpicture}
 \caption{\'Arbol generado por el algoritmo de programación din\'amica}
 \label{pd}
@@ -95,11 +99,11 @@ Tiempo de ejecución: 0.000002 segundos.
 \centering
 \begin{tabular}{c|cccccc}
 \backslashbox{$i$}{$j$} & 1    & 2    & 3    & 4    & 5    & 6    \\ \hline
-1 & 1 & 1 & 3 & 3 & 3 & 3 \\
-2 & & 2 & 3 & 3 & 3 & 3 \\
-3 & & & 3 & 3 & 3 & 3 \\
-4 & & & & 4 & 5 & 5 \\
-5 & & & & & 5 & 5 \\
+1 & 1 & 1 & 3 & 3 & 3 & 6 \\
+2 & & 2 & 3 & 3 & 3 & 6 \\
+3 & & & 3 & 3 & 3 & 6 \\
+4 & & & & 4 & 5 & 6 \\
+5 & & & & & 5 & 6 \\
 6 & & & & & & 6 \\
 
 \end{tabular}
@@ -114,7 +118,9 @@ every node/.style = {minimum width = 3em, draw, circle},
 level/.style={sibling distance={3cm/max(1,#1)}}
 ]
 \scriptsize
-\node {C}
+\node {F}
+child{
+node {C}
 child {
 node {A}
 child[missing]
@@ -123,11 +129,13 @@ node {B}
 }
 }
 child {node {E}
-child {
+child{
 node {D}
 }
-child {node {F}
-}};
+child[missing]
+}}
+child[missing]
+;
 \end{tikzpicture}
 \caption{\'Arbol generado por el algoritmo greedy}
 \label{greedy}

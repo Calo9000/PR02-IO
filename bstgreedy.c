@@ -13,6 +13,7 @@ int max(float p[], int n){
 	return t;
 }
 
+// n es cantidad de llaves, p es probabilidad de las llaves de acuerdo al orden de prioridad, r es arreglo raiz que se modifica
 void bstGreedy(int n, float p[N],  int R[N][N])
 {
 	
@@ -49,10 +50,10 @@ int main()
 {
 
 	//int n = 5;
-	int n = 4;
+	int n = 10;
 	
 	//float p[] = {0.3, 0.2, 0.1, 0.15, 0.25};
-	float p[] = {0.18, 0.32, 0.39, 0.11};
+	float p[] = {1,2,3,4,5,6,7,8,9,10};
 
 	//	EL ORDEN DE LAS PROBABILIDADES ES EL ORDEN DE PRIORIDAD DE LAS LLAVES
 

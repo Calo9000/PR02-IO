@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.15)  15 OCT 2021 14:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.15)  15 OCT 2021 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -380,7 +380,7 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count266
 \l__pdf_internal_box=\box59
 )
-No file ejemplo.aux.
+(./ejemplo.aux)
 \openout1 = `ejemplo.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -399,7 +399,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-ABD: EveryShipout initializing macros
+ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count267
@@ -430,7 +430,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Overfull \hbox (2.85027pt too wide) in paragraph at lines 91--92
+Overfull \hbox (2.85027pt too wide) in paragraph at lines 95--96
 \OT1/cmr/m/n/10 A con-tin-uaci^^Son se mues-tran la tabla R gen-er-ada por el a
 l-go-ritmo greedy. Adem^^Sas,
  []
@@ -441,19 +441,19 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 12837 strings out of 481253
- 261296 string characters out of 5920936
- 470314 words of memory out of 5000000
- 27918 multiletter control sequences out of 15000+600000
+ 12843 strings out of 481253
+ 261456 string characters out of 5920936
+ 470388 words of memory out of 5000000
+ 27922 multiletter control sequences out of 15000+600000
  533548 words of font info for 28 fonts, out of 8000000 for 9000
  1139 hyphenation exceptions out of 8191
- 60i,15n,65p,411b,1122s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,67p,411b,1336s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on ejemplo.pdf (3 pages, 54087 bytes).
+Output written on ejemplo.pdf (3 pages, 54410 bytes).
 PDF statistics:
  37 PDF objects out of 1000 (max. 8388607)
  26 compressed objects within 1 object stream

@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define N 100
+#define N 500
 #define inf 9999
 
 // inicializa y rellena las matrices root y average. n es cantidad de llaves, p es un arreglo con la probabilidad de cada llave ordenado segun prioridad

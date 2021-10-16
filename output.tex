@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\pagestyle{fancy}
+\lhead{Resultados de los algoritmos}
+\rhead{Proyecto II IC6400}
+\begin{document}
+\section*{Reporte de resultados obtenidos}
+En el presente documento se muestran los resultados de la ejecución de los algoritmos. Las tablas 1 y 2 corresponde con los resultados de la ejecuci\'on de los algoritmos de programación din\'amica y greedy, respectivamente. En cada casilla se muestra el tiempo de ejecución promedio de 10 escenarios. La cantidad de llaves que se ordenaron en cada escenario se muestra en la columna izquierda, y el tiempo en segundos se muestra en la columna derecha. 
+ En la tabla 3 se muestra el porcentaje de veces que el \'arbol generado por el algoritmo greedy coincidi\'o con el \'arbol \'optimo.
+\begin{center}
+\begin{table}[ht]
+\centering
+\caption*{Tabla 1: Tiempos promedio de ejecuci\'on con Programaci\'on Din\'amica (segundos)}
+\label{1}
+\begin{tabular}{r|l}
+Llaves & \begin{tabular}[c]{@{}c@{}}Tiempo\\ (segundos)\end{tabular} \\ \hline
+10&0.000005\\
+20&0.000030\\
+30&0.000085\\
+40&0.000176\\
+50&0.000317\\
+60&0.000535\\
+70&0.001093\\
+80&0.001202\\
+90&0.001678\\
+100&0.002355\\
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption*{Tabla 2: Tiempos promedio de ejecuci\'on con Algoritmo Greedy (segundos)}
+\label{2}
+\begin{tabular}{r|l}
+Llaves & \begin{tabular}[c]{@{}c@{}}Tiempo\\ (segundos)\end{tabular} \\ \hline
+10&0.000004\\
+20&0.000019\\
+30&0.000050\\
+40&0.000099\\
+50&0.000191\\
+60&0.000283\\
+70&0.000558\\
+80&0.000638\\
+90&0.000889\\
+100&0.001245\\
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption*{Tabla 3: Porcentaje de \'exitos para el algoritmo Greedy}
+\label{4}
+\begin{tabular}{r|l}
+Llaves & Porcentaje \\ \hline
+10&0.000000\%\\
+20&0.000000\%\\
+30&0.000000\%\\
+40&0.000000\%\\
+50&0.000000\%\\
+60&0.000000\%\\
+70&0.000000\%\\
+80&0.000000\%\\
+90&0.000000\%\\
+100&0.000000\%\\
+\end{tabular}
+\end{table}
+\end{center}
+\end{document}

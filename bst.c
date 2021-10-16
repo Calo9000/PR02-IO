@@ -415,7 +415,7 @@ int experimento(int n){
     }
 
     // generar el latex
-
+    /*
     for(int i=0; i<10; i++){
         printf("%f\t", promedios_pd[i]);
     }
@@ -428,12 +428,12 @@ int experimento(int n){
         printf("%f\t", porcentajes_g[i]);
     }
     printf("\n");
-
+    */
 
     // iniciar documento
     char archivo[ARRAY_SIZE] = "";
 
-    char inicio[ARRAY_SIZE] = "\\documentclass{article}\n\\usepackage{textcomp}\n\\usepackage{tabularx}\n\\usepackage{fancyhdr}\n\\usepackage{multirow}\n\\usepackage{graphicx}\n\\usepackage{caption}\n\\pagestyle{fancy}\n\\lhead{Resultados de los algoritmos}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Reporte de resultados obtenidos}\nEn el presente documento se muestran los resultados de la ejecución de los algoritmos. Las tablas 1, 2 y 3 corresponden con los algoritmos de programación din\\'amica, greedy y greedy proporcional respectivamente. En cada casilla se muestra el tiempo de ejecución promedio de ";
+    char inicio[ARRAY_SIZE] = "\\documentclass{article}\n\\usepackage{textcomp}\n\\usepackage{fancyhdr}\n\\usepackage{multirow}\n\\usepackage{graphicx}\n\\usepackage{caption}\n\\pagestyle{fancy}\n\\lhead{Resultados de los algoritmos}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Reporte de resultados obtenidos}\nEn el presente documento se muestran los resultados de la ejecución de los algoritmos. Las tablas 1 y 2 corresponde con los resultados de la ejecuci\\'on de los algoritmos de programación din\\'amica y greedy, respectivamente. En cada casilla se muestra el tiempo de ejecución promedio de ";
 
     char entrada[10];    
     snprintf(entrada, 10, "%d", n);
@@ -448,11 +448,12 @@ int experimento(int n){
     // GENERAR LAS 3 TABLAS
     char inicioTabla[ARRAY_SIZE] = "\\begin{table}[ht]\n\\centering\n";
 
-    char tituloPD[ARRAY_SIZE] = "\\caption*{Tabla 1: Tiempos promedio de ejecuci\\'on con Programaci\\'on Din\\'amica (\\textmu s)}\n\\label{1}\n";
-    char tituloG[ARRAY_SIZE] = "\\caption*{Tabla 2: Tiempos promedio de ejecuci\\'on con Algoritmo Greedy (\\textmu s)}\n\\label{2}\n";
+    char tituloPD[ARRAY_SIZE] = "\\caption*{Tabla 1: Tiempos promedio de ejecuci\\'on con Programaci\\'on Din\\'amica (segundos)}\n\\label{1}\n";
+    char tituloG[ARRAY_SIZE] = "\\caption*{Tabla 2: Tiempos promedio de ejecuci\\'on con Algoritmo Greedy (segundos)}\n\\label{2}\n";
     char tituloGP[ARRAY_SIZE] = "\\caption*{Tabla 3: Porcentaje de \\'exitos para el algoritmo Greedy}\n\\label{4}\n";
 
-    char inicioTabla2[ARRAY_SIZE] = "\\begin{tabular}{r|l}\nLlaves & \\begin{tabular}[c]{@{}c@{}}Tiempo\\\\ (segundos)\\end{tabular} \\\\ \\hline";
+    char inicioTabla2[ARRAY_SIZE] = "\\begin{tabular}{r|l}\nLlaves & \\begin{tabular}[c]{@{}c@{}}Tiempo\\\\ (segundos)\\end{tabular} \\\\ \\hline\n";
+    char inicioTabla2GP[ARRAY_SIZE] = "\\begin{tabular}{r|l}\nLlaves & Porcentaje \\\\ \\hline\n";
 
     // declarar tablas
     char tablaPD[ARRAY_SIZE] = "";
@@ -470,7 +471,87 @@ int experimento(int n){
 
     strcat(tablaGP, inicioTabla);
     strcat(tablaGP, tituloGP);
-    strcat(tablaGP, inicioTabla2);
+    strcat(tablaGP, inicioTabla2GP);
+
+    for (int i = 0; i<10; i++){
+
+        int fila = (i+1)*10;
+        char flstr[5] = "";
+        snprintf(flstr, 5, "%d", fila);
+        char filastr[10] = "&";
+        strcat(flstr, filastr);
+
+        // poner numero de llaves en la tabla
+        strcat(tablaPD, flstr);
+        strcat(tablaG, flstr);
+        strcat(tablaGP, flstr);
+
+        // poner datos en la tabla
+        char bufferPD[16];
+
+        float x = promedios_pd[i];
+        snprintf(bufferPD, 16, "%f", x);
+        strcat(tablaPD, bufferPD);
+
+        char bufferG[16];
+                
+        float y = promedios_g[i];
+        snprintf(bufferG, 16, "%f", y);
+        strcat(tablaG, bufferG);
+
+        char bufferGP[16];
+                
+        float z = porcentajes_g[i];
+        snprintf(bufferGP, 16, "%f", z);
+        strcat(tablaGP, bufferGP);
+        strcat(tablaGP, "\\%");
+
+        strcat(tablaPD, "\\\\\n");
+        strcat(tablaG, "\\\\\n");
+        strcat(tablaGP, "\\\\\n");
+
+    }
+
+    char finTabla[ARRAY_SIZE]  = "\\end{tabular}\n\\end{table}\n";
+    strcat(tablaPD, finTabla);
+    strcat(tablaG, finTabla);
+    strcat(tablaGP, finTabla);
+
+    // concatenar todo
+    
+    strcat(archivo, inicio);
+    strcat(archivo, tablaPD);
+    strcat(archivo, tablaG);
+    strcat(archivo, tablaGP);
+    strcat(archivo, final);
+
+    //printf("%s\n", archivo);
+
+    
+    char name[10] = "output";
+    char fileName[70];
+	char pdfName[70];
+
+    snprintf(fileName, 90, "./%s.tex", name);
+	snprintf(pdfName, 90, "%s.pdf", name);
+    FILE *file;
+
+    file = fopen(fileName, "w");
+	fprintf(file, "%s\n", archivo);
+	fclose(file);
+
+    char pdflatexFile[90];
+	char evinceFile[90];
+
+    snprintf(pdflatexFile, 90, "pdflatex %s", fileName);
+
+	snprintf(evinceFile, 90, "evince -s %s", pdfName);
+    printf("%s\n", pdflatexFile );
+						     
+	system(pdflatexFile);
+						        
+	system(evinceFile);
+    
 
     return 0;
 

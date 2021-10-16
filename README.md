@@ -26,7 +26,7 @@ INSTRUCCIONES DE UTILIZACIÓN:
 
    - Donde n corresponde al número de casos diferentes que se resolverán en cada escenario con los 2 algoritmos mencionados.
 
-4) a) Si se ejecuta el primer comando (./bst -X) dentro de la terminal, el programa despliegará el siguiente output dentro de un archivo PDF:
+4) a) Si se ejecuta el primer comando (./bst -X) dentro de la terminal, el programa desplegará el siguiente output dentro de un archivo PDF:
 ------------
       -Una breve descripción del problema, en el que se contempla las llaves utilizadas y la probabilidad de cada una. Además de los algoritmos que se utilizaron.
       -Los datos generados para el problema, esto se detalla en una tabla  con las llaves utilizadas y la probabilidad generada aleatoriamente para cada una.

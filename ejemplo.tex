@@ -5,8 +5,9 @@
 \usepackage{tikz}
 \usepackage{slashbox}
 \pagestyle{fancy}
-\lhead{Modo ejemplo}
-\rhead{Proyecto II IC6400}
+\setlength{\headheight}{30pt}
+\lhead{Francisco Badilla - 2018135171\\Carlos Kruse - 2019046757}
+\rhead{Proyecto II IC6400\\Modo ejemplo}
 \begin{document}
 \section*{Resultados del modo de ejemplo}
 \subsection*{I. Descripción del problema}
@@ -19,7 +20,7 @@ Los datos utilizados se resumen en la siguiente tabla:
 \centering
 \begin{tabular}{r|l|l|l|l|l|l}
 Llave & A & B & C & D & E & F  \\\hline
-Probabilidad & 0.18 & 0.09 & 0.23 & 0.12 & 0.10 & 0.28
+Probabilidad & 0.17 & 0.21 & 0.12 & 0.08 & 0.20 & 0.22
 \end{tabular}
 \label{datos}
 \end{table}
@@ -32,12 +33,12 @@ Tiempo de ejecución: 0.000004 segundos.
 \centering
 \begin{tabular}{c|ccccccc}
 \backslashbox{$i$}{$j$} & 0 & 1    & 2    & 3    & 4    & 5    & 6    \\ \hline
-1 & 0.00 & 0.18 & 0.36 & 0.86 & 1.10 & 1.40 & 2.18 \\
-2 & & 0.00 & 0.09 & 0.41 & 0.65 & 0.95 & 1.71 \\
-3 & & & 0.00 & 0.23 & 0.47 & 0.77 & 1.44 \\
-4 & & & & 0.00 & 0.12 & 0.32 & 0.82 \\
-5 & & & & & 0.00 & 0.10 & 0.48 \\
-6 & & & & & & 0.00 & 0.28 \\
+1 & 0.00 & 0.17 & 0.55 & 0.79 & 1.03 & 1.63 & 2.25 \\
+2 & & 0.00 & 0.21 & 0.45 & 0.69 & 1.18 & 1.74 \\
+3 & & & 0.00 & 0.12 & 0.28 & 0.68 & 1.12 \\
+4 & & & & 0.00 & 0.08 & 0.36 & 0.80 \\
+5 & & & & & 0.00 & 0.20 & 0.62 \\
+6 & & & & & & 0.00 & 0.22 \\
 7 & & & & & & & 0.00 \\
 
 \end{tabular}
@@ -49,10 +50,10 @@ Tiempo de ejecución: 0.000004 segundos.
 \centering
 \begin{tabular}{c|cccccc}
 \backslashbox{$i$}{$j$} & 1    & 2    & 3    & 4    & 5    & 6    \\ \hline
-1 & 1 & 1 & 3 & 3 & 3 & 3 \\
-2 & & 2 & 3 & 3 & 3 & 4 \\
-3 & & & 3 & 3 & 3 & 4 \\
-4 & & & & 4 & 4 & 6 \\
+1 & 1 & 2 & 2 & 2 & 2 & 5 \\
+2 & & 2 & 2 & 2 & 3 & 5 \\
+3 & & & 3 & 3 & 5 & 5 \\
+4 & & & & 4 & 5 & 5 \\
 5 & & & & & 5 & 6 \\
 6 & & & & & & 6 \\
 
@@ -64,27 +65,23 @@ Tiempo de ejecución: 0.000004 segundos.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[
-every node/.style = {minimum width = 3em, draw, circle},
-level/.style={sibling distance={3cm/max(1,#1)}}
+every node/.style = {minimum width = 2.5em, draw, circle},
+level/.style={sibling distance={3cm/max(1,#1)}, level distance=10mm}
 ]
 \scriptsize
-\node {C}
+\node {E}
+child {
+node {B}
 child {
 node {A}
+}
+child {node {C}
 child[missing]
-child{
-node {B}
-}
-}
-child {node {F}
 child{
 node {D}
-child[missing]
-child{
-node {E}
 }
-}
-child[missing]
+}}
+child {node {F}
 };
 \end{tikzpicture}
 \caption{\'Arbol generado por el algoritmo de programación din\'amica}
@@ -95,15 +92,15 @@ child[missing]
 \subsection*{IV. Algoritmo Greedy}
 A continuaci\'on se muestran la tabla R generada por el algoritmo greedy. Adem\'as, se muestra el \'arbol resultante.
 
-Tiempo de ejecución: 0.000002 segundos.
+Tiempo de ejecución: 0.000003 segundos.
 \begin{table}[ht]
 \centering
 \begin{tabular}{c|cccccc}
 \backslashbox{$i$}{$j$} & 1    & 2    & 3    & 4    & 5    & 6    \\ \hline
-1 & 1 & 1 & 3 & 3 & 3 & 6 \\
-2 & & 2 & 3 & 3 & 3 & 6 \\
-3 & & & 3 & 3 & 3 & 6 \\
-4 & & & & 4 & 4 & 6 \\
+1 & 1 & 2 & 2 & 2 & 2 & 6 \\
+2 & & 2 & 2 & 2 & 2 & 6 \\
+3 & & & 3 & 3 & 5 & 6 \\
+4 & & & & 4 & 5 & 6 \\
 5 & & & & & 5 & 6 \\
 6 & & & & & & 6 \\
 
@@ -115,25 +112,25 @@ Tiempo de ejecución: 0.000002 segundos.
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[
-every node/.style = {minimum width = 3em, draw, circle},
-level/.style={sibling distance={3cm/max(1,#1)}}
+every node/.style = {minimum width = 2.5em, draw, circle},
+level/.style={sibling distance={6cm/max(1,#1)}, , level distance=10mm}
 ]
 \scriptsize
 \node {F}
 child{
-node {C}
+node {B}
 child {
 node {A}
+}
+child {node {E}
+child{
+node {C}
 child[missing]
 child{
-node {B}
+node {D}
 }
 }
-child {node {D}
 child[missing]
-child{
-node {E}
-}
 }}
 child[missing]
 ;

@@ -415,9 +415,10 @@ int experimento(int n){
 
         porcentajes_g[i] = (float) coincidencias * 100.0f / (float) n;
 
-        printf("coincidencias: %d\n", coincidencias);
+        //printf("coincidencias: %d\n", coincidencias);
 
     }
+    printf("\n");
 
     // generar el latex
     /*

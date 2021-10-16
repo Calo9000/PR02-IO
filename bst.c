@@ -165,7 +165,7 @@ int ejemplo(){
 
     strcat(arbolGreedy, ";\n\\end{tikzpicture}\n\\caption{\\'Arbol generado por el algoritmo greedy}\n\\label{greedy}\n\\end{figure}\n");
 
-    char inicio[ARRAY_SIZE] = "\\documentclass{article}\n\\usepackage{fancyhdr}\n\\usepackage{caption}\n\\usepackage{tikz}\n\\usepackage{slashbox}\n\\pagestyle{fancy}\n\\lhead{Modo ejemplo}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Resultados del modo de ejemplo}\n\\subsection*{I. Descripción del problema}\nSe tienen 6 llaves diferentes (A, B, C, D, E y F), cada una de las cuales tiene una probabilidad diferente de ser buscada. El objetivo es construir un \\'arbol de b\\'usqueda binario a partir de estas llaves, de forma que el tiempo de b\\'usqueda promedio sea el menor posible. Para esto se emple\\'o un algoritmo de programaci\\'on din\\'amica y un algoritmo greedy.\n\n\\subsection*{II. Datos del problema}\nLos datos utilizados se resumen en la siguiente tabla:\n\n";
+    char inicio[ARRAY_SIZE] = "\\documentclass[a4paper]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\usepackage{caption}\n\\usepackage{tikz}\n\\usepackage{slashbox}\n\\pagestyle{fancy}\n\\lhead{Modo ejemplo}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Resultados del modo de ejemplo}\n\\subsection*{I. Descripción del problema}\nSe tienen 6 llaves diferentes (A, B, C, D, E y F), cada una de las cuales tiene una probabilidad diferente de ser buscada. El objetivo es construir un \\'arbol de b\\'usqueda binario a partir de estas llaves, de forma que el tiempo de b\\'usqueda promedio sea el menor posible. Para esto se emple\\'o un algoritmo de programaci\\'on din\\'amica y un algoritmo greedy.\n\n\\subsection*{II. Datos del problema}\nLos datos utilizados se resumen en la siguiente tabla:\n\n";
 
     char tablaDatos[ARRAY_SIZE] = "\\begin{table}[ht]\n\\centering\n\\begin{tabular}{r|l|l|l|l|l|l}\nLlave & A & B & C & D & E & F  \\\\\\hline\nProbabilidad";
 
@@ -433,13 +433,13 @@ int experimento(int n){
     // iniciar documento
     char archivo[ARRAY_SIZE] = "";
 
-    char inicio[ARRAY_SIZE] = "\\documentclass{article}\n\\usepackage{textcomp}\n\\usepackage{fancyhdr}\n\\usepackage{multirow}\n\\usepackage{graphicx}\n\\usepackage{caption}\n\\pagestyle{fancy}\n\\lhead{Resultados de los algoritmos}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Reporte de resultados obtenidos}\nEn el presente documento se muestran los resultados de la ejecución de los algoritmos. Las tablas 1 y 2 corresponde con los resultados de la ejecuci\\'on de los algoritmos de programación din\\'amica y greedy, respectivamente. En cada casilla se muestra el tiempo de ejecución promedio de ";
+    char inicio[ARRAY_SIZE] = "\\documentclass[a4paper]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{textcomp}\n\\usepackage{fancyhdr}\n\\usepackage{caption}\n\\pagestyle{fancy}\n\\lhead{Resultados de los algoritmos}\n\\rhead{Proyecto II IC6400}\n\\begin{document}\n\\section*{Reporte de resultados obtenidos}\nEn el presente documento se muestran los resultados de la ejecución de los algoritmos. Las tablas 1 y 2 corresponde con los resultados de la ejecuci\\'on de los algoritmos de programación din\\'amica y greedy, respectivamente. En cada casilla se muestra el tiempo de ejecución promedio de ";
 
     char entrada[10];    
     snprintf(entrada, 10, "%d", n);
     strcat(inicio, entrada);
 
-    strcat(inicio, " escenarios. La cantidad de llaves que se ordenaron en cada escenario se muestra en la columna izquierda, y el tiempo en segundos se muestra en la columna derecha. \n En la tabla 3 se muestra el porcentaje de veces que el \\'arbol generado por el algoritmo greedy coincidi\\'o con el \\'arbol \\'optimo.\n\\begin{center}\n");
+    strcat(inicio, " escenarios. La cantidad de llaves que se ordenaron en cada escenario se muestra en la columna izquierda, y el tiempo promedio en segundos se muestra en la columna derecha. \n En la tabla 3 se muestra el porcentaje de veces que el \\'arbol generado por el algoritmo greedy coincidi\\'o con el \\'arbol \\'optimo.\n\\begin{center}\n");
 
     // finalizar documento
     char final[ARRAY_SIZE] = "\\end{center}\n\\end{document}";
